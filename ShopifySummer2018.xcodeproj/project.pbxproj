@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		443087041FE8ED46003A93FB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443087031FE8ED46003A93FB /* HomeViewController.swift */; };
+		443087061FE8ED76003A93FB /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443087051FE8ED76003A93FB /* ProductsViewController.swift */; };
+		443087081FE8ED8E003A93FB /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443087071FE8ED8E003A93FB /* StoreViewController.swift */; };
+		4430870A1FE8EE1C003A93FB /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443087091FE8EE1C003A93FB /* OrdersViewController.swift */; };
+		4430870C1FE8EEC2003A93FB /* ProductManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4430870B1FE8EEC2003A93FB /* ProductManager.swift */; };
+		4430870E1FE8EEE0003A93FB /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4430870D1FE8EEE0003A93FB /* Product.swift */; };
+		443087101FE8F262003A93FB /* ProductsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4430870F1FE8F262003A93FB /* ProductsDataProvider.swift */; };
+		443087121FE972F7003A93FB /* LoginAndSignup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 443087111FE972F7003A93FB /* LoginAndSignup.storyboard */; };
 		4476E3861FE8A10B00709AEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4476E3851FE8A10B00709AEF /* AppDelegate.swift */; };
 		4476E3881FE8A10B00709AEF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4476E3871FE8A10B00709AEF /* ViewController.swift */; };
 		4476E38B1FE8A10B00709AEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4476E3891FE8A10B00709AEF /* Main.storyboard */; };
@@ -15,6 +23,8 @@
 		4476E3931FE8A10B00709AEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4476E3911FE8A10B00709AEF /* LaunchScreen.storyboard */; };
 		4476E39E1FE8A10B00709AEF /* ShopifySummer2018Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4476E39D1FE8A10B00709AEF /* ShopifySummer2018Tests.swift */; };
 		4476E3A91FE8A10B00709AEF /* ShopifySummer2018UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4476E3A81FE8A10B00709AEF /* ShopifySummer2018UITests.swift */; };
+		4476E3B71FE8C02000709AEF /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4476E3B61FE8C02000709AEF /* OnboardingViewController.swift */; };
+		4476E3B91FE8C28F00709AEF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4476E3B81FE8C28F00709AEF /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +45,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		443087031FE8ED46003A93FB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		443087051FE8ED76003A93FB /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
+		443087071FE8ED8E003A93FB /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
+		443087091FE8EE1C003A93FB /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
+		4430870B1FE8EEC2003A93FB /* ProductManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductManager.swift; sourceTree = "<group>"; };
+		4430870D1FE8EEE0003A93FB /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		4430870F1FE8F262003A93FB /* ProductsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsDataProvider.swift; sourceTree = "<group>"; };
+		443087111FE972F7003A93FB /* LoginAndSignup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginAndSignup.storyboard; sourceTree = "<group>"; };
 		4476E3821FE8A10A00709AEF /* ShopifySummer2018.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShopifySummer2018.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4476E3851FE8A10B00709AEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4476E3871FE8A10B00709AEF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +67,8 @@
 		4476E3A41FE8A10B00709AEF /* ShopifySummer2018UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShopifySummer2018UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4476E3A81FE8A10B00709AEF /* ShopifySummer2018UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopifySummer2018UITests.swift; sourceTree = "<group>"; };
 		4476E3AA1FE8A10B00709AEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4476E3B61FE8C02000709AEF /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		4476E3B81FE8C28F00709AEF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +121,17 @@
 			children = (
 				4476E3851FE8A10B00709AEF /* AppDelegate.swift */,
 				4476E3871FE8A10B00709AEF /* ViewController.swift */,
+				4476E3B61FE8C02000709AEF /* OnboardingViewController.swift */,
+				443087031FE8ED46003A93FB /* HomeViewController.swift */,
+				443087051FE8ED76003A93FB /* ProductsViewController.swift */,
+				443087071FE8ED8E003A93FB /* StoreViewController.swift */,
+				443087091FE8EE1C003A93FB /* OrdersViewController.swift */,
+				4430870B1FE8EEC2003A93FB /* ProductManager.swift */,
+				4430870F1FE8F262003A93FB /* ProductsDataProvider.swift */,
+				4430870D1FE8EEE0003A93FB /* Product.swift */,
+				4476E3B81FE8C28F00709AEF /* Extensions.swift */,
 				4476E3891FE8A10B00709AEF /* Main.storyboard */,
+				443087111FE972F7003A93FB /* LoginAndSignup.storyboard */,
 				4476E38F1FE8A10B00709AEF /* Assets.xcassets */,
 				4476E3911FE8A10B00709AEF /* LaunchScreen.storyboard */,
 				4476E3941FE8A10B00709AEF /* Info.plist */,
@@ -237,6 +267,7 @@
 			files = (
 				4476E3931FE8A10B00709AEF /* LaunchScreen.storyboard in Resources */,
 				4476E3901FE8A10B00709AEF /* Assets.xcassets in Resources */,
+				443087121FE972F7003A93FB /* LoginAndSignup.storyboard in Resources */,
 				4476E38B1FE8A10B00709AEF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,9 +293,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				443087081FE8ED8E003A93FB /* StoreViewController.swift in Sources */,
+				4430870C1FE8EEC2003A93FB /* ProductManager.swift in Sources */,
+				4476E3B91FE8C28F00709AEF /* Extensions.swift in Sources */,
 				4476E3881FE8A10B00709AEF /* ViewController.swift in Sources */,
+				443087061FE8ED76003A93FB /* ProductsViewController.swift in Sources */,
+				4430870E1FE8EEE0003A93FB /* Product.swift in Sources */,
+				443087101FE8F262003A93FB /* ProductsDataProvider.swift in Sources */,
+				4430870A1FE8EE1C003A93FB /* OrdersViewController.swift in Sources */,
 				4476E3861FE8A10B00709AEF /* AppDelegate.swift in Sources */,
 				4476E38E1FE8A10B00709AEF /* ShopifySummer2018.xcdatamodeld in Sources */,
+				4476E3B71FE8C02000709AEF /* OnboardingViewController.swift in Sources */,
+				443087041FE8ED46003A93FB /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
