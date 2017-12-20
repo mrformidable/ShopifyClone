@@ -30,7 +30,6 @@ class OnboardingViewController: UIViewController {
     private lazy var pageControl:UIPageControl = {
         let pgControl = UIPageControl()
         pgControl.numberOfPages = 4
-        pgControl.translatesAutoresizingMaskIntoConstraints = false
         pgControl.currentPageIndicatorTintColor = UIColor.themePurple()
         pgControl.pageIndicatorTintColor = UIColor.themeLightPurple()
         return pgControl
@@ -38,7 +37,6 @@ class OnboardingViewController: UIViewController {
     
     private lazy var signupButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.isHidden = true
         button.backgroundColor = .white
         button.setTitle("Sign up", for: .normal)
@@ -49,7 +47,6 @@ class OnboardingViewController: UIViewController {
     
     private lazy var logInButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.isHidden = true
         button.backgroundColor = .white
         button.setTitle("Sign up", for: .normal)
@@ -60,7 +57,6 @@ class OnboardingViewController: UIViewController {
     
     private lazy var nextButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(#imageLiteral(resourceName: "next_button"), for: .normal)
         return button
     }()

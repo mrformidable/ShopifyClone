@@ -22,85 +22,120 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-111" y="65"/>
+            <point key="canvasLocation" x="183" y="143"/>
         </scene>
-        <!--View Controller-->
+        <!--Orders-->
         <scene sceneID="jNJ-Z8-HCj">
             <objects>
                 <viewController id="HDS-As-ifm" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WIR-zO-AOX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.45118087530136108" green="0.52240204811096191" blue="0.82517313957214355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="mPu-qu-ncc"/>
                     </view>
-                    <navigationItem key="navigationItem" id="z5X-dJ-R4b"/>
+                    <navigationItem key="navigationItem" title="Orders" id="z5X-dJ-R4b"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ud-jO-YWi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2084" y="519"/>
+            <point key="canvasLocation" x="2041" y="519"/>
         </scene>
-        <!--View Controller-->
+        <!--Store-->
         <scene sceneID="fLu-6p-xq8">
             <objects>
                 <viewController id="cmd-Mi-HQb" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zAM-qo-xTY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="iwy-5Z-w9C"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ptB-Kr-E8n"/>
+                    <navigationItem key="navigationItem" title="Store" id="ptB-Kr-E8n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a09-Is-OYJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3481" y="519"/>
         </scene>
-        <!--View Controller-->
+        <!--Products-->
         <scene sceneID="QCL-gY-scL">
             <objects>
-                <viewController id="0P0-AX-hlP" sceneMemberID="viewController">
+                <viewController id="0P0-AX-hlP" customClass="ProductsViewController" customModule="ShopifySummer2018" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C98-a6-EAw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bjb-vz-juL">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="wqJ-j7-hLe">
+                                    <rect key="frame" x="0.0" y="98" width="375" height="9"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProductCell" rowHeight="70" id="L1S-f9-C6V" customClass="ProductsTableViewCell" customModule="ShopifySummer2018" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="L1S-f9-C6V" id="2jl-sQ-34b">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="69.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Bjb-vz-juL" firstAttribute="trailing" secondItem="0yN-GJ-hfs" secondAttribute="trailing" id="UdU-6K-vk2"/>
+                            <constraint firstItem="Bjb-vz-juL" firstAttribute="top" secondItem="0yN-GJ-hfs" secondAttribute="top" id="Y1N-QX-xkT"/>
+                            <constraint firstItem="Bjb-vz-juL" firstAttribute="leading" secondItem="0yN-GJ-hfs" secondAttribute="leading" id="ghT-bn-gKF"/>
+                            <constraint firstAttribute="bottom" secondItem="Bjb-vz-juL" secondAttribute="bottom" id="u14-0z-5TI"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="0yN-GJ-hfs"/>
                     </view>
-                    <navigationItem key="navigationItem" id="gdW-UR-Jmt"/>
+                    <navigationItem key="navigationItem" title="Products" id="gdW-UR-Jmt"/>
+                    <connections>
+                        <outlet property="productsDataProvider" destination="7Uq-B1-uk0" id="pJA-Kc-X7b"/>
+                        <outlet property="recentProductsDataProvider" destination="MLQ-yY-V6A" id="Kwb-1t-9VM"/>
+                        <outlet property="tableView" destination="Bjb-vz-juL" id="Oem-gT-JCf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="186-fA-mis" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="7Uq-B1-uk0" customClass="ProductsDataProvider" customModule="ShopifySummer2018" customModuleProvider="target"/>
+                <customObject id="MLQ-yY-V6A" customClass="RecentProductsDataProvider" customModule="ShopifySummer2018" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="3482" y="-209"/>
+            <point key="canvasLocation" x="3820" y="-209.14542728635683"/>
         </scene>
-        <!--Home-->
+        <!--View Controller-->
         <scene sceneID="Nf8-kn-1An">
             <objects>
                 <viewController id="hSf-dx-Ntx" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ALF-Jj-cWC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="Pp1-br-IRE"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="home_icon" id="uHn-wn-5Vv"/>
+                    <navigationItem key="navigationItem" id="zCr-vK-Akl"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m4f-1y-eRh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2084" y="-209"/>
+            <point key="canvasLocation" x="2380" y="-209.14542728635683"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="85B-de-7un">
             <objects>
                 <tabBarController id="EPX-T6-jB6" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tbH-eX-4Tg">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="tbH-eX-4Tg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="selectedImageTintColor" red="0.45118087530000001" green="0.52240204810000002" blue="0.82517313960000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="hSf-dx-Ntx" kind="relationship" relationship="viewControllers" id="EzG-Xd-2z3"/>
+                        <segue destination="7TY-s7-6gF" kind="relationship" relationship="viewControllers" id="EzG-Xd-2z3"/>
                         <segue destination="d4b-Ij-O1w" kind="relationship" relationship="viewControllers" id="NZc-mo-TQQ"/>
                         <segue destination="vha-pI-CT3" kind="relationship" relationship="viewControllers" id="NBq-OJ-rxS"/>
                         <segue destination="DvN-2a-cRy" kind="relationship" relationship="viewControllers" id="l0C-qK-FaS"/>
@@ -108,17 +143,21 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N1s-Wd-CiX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1263" y="-209"/>
+            <point key="canvasLocation" x="921" y="-209"/>
         </scene>
         <!--Products-->
         <scene sceneID="EoF-bx-hZx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vha-pI-CT3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Products" image="products_icon" id="OSh-9F-WbY"/>
+                    <tabBarItem key="tabBarItem" title="Products" image="products_icon" selectedImage="product_icon_purple" id="OSh-9F-WbY"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="U1h-su-NUt">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.13725490196078433" green="0.0" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -127,17 +166,21 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bfh-1O-M6u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2767" y="-209"/>
+            <point key="canvasLocation" x="3104.8000000000002" y="-209.14542728635683"/>
         </scene>
         <!--Store-->
         <scene sceneID="vrj-UZ-FT7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DvN-2a-cRy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Store" image="store_icon" id="F4p-mm-G6W"/>
+                    <tabBarItem key="tabBarItem" title="Store" image="store_icon" selectedImage="store_icon_purple" id="F4p-mm-G6W"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jZG-fJ-o6v">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="jZG-fJ-o6v">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.31372549020000001" green="0.14117647059999999" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -152,11 +195,15 @@
         <scene sceneID="Y3I-CH-Rvm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="d4b-Ij-O1w" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Orders" image="orders_icon" id="a1W-xU-IX8"/>
+                    <tabBarItem key="tabBarItem" title="Orders" image="orders_icon" selectedImage="order_icon_purple" id="a1W-xU-IX8"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iVR-sc-3XP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="iVR-sc-3XP">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.31520029902458191" green="0.14006936550140381" blue="0.56169450283050537" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -167,11 +214,35 @@
             </objects>
             <point key="canvasLocation" x="1262" y="519"/>
         </scene>
+        <!--Home-->
+        <scene sceneID="iYs-gM-m5e">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7TY-s7-6gF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="home_icon" selectedImage="home_icon_purple" id="uHn-wn-5Vv"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="pRi-MV-hbd">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.31520029900000002" green="0.14006936549999999" blue="0.5616945028" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hSf-dx-Ntx" kind="relationship" relationship="rootViewController" id="CY5-YD-t6B"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MSe-0X-f7t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1657" y="-209"/>
+        </scene>
     </scenes>
     <resources>
         <image name="home_icon" width="20" height="20"/>
+        <image name="home_icon_purple" width="20" height="20"/>
+        <image name="order_icon_purple" width="20" height="20"/>
         <image name="orders_icon" width="20" height="20"/>
+        <image name="product_icon_purple" width="20" height="20"/>
         <image name="products_icon" width="20" height="20"/>
         <image name="store_icon" width="20" height="20"/>
+        <image name="store_icon_purple" width="20" height="20"/>
     </resources>
 </document>
