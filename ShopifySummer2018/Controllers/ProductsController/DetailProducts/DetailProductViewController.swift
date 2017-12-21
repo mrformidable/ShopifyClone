@@ -22,15 +22,14 @@ class DetailProductViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
-        flowLayout.sectionInset = UIEdgeInsetsMake(10, 0, 0, 0)
-        flowLayout.minimumLineSpacing = 15
+        flowLayout.sectionInset = UIEdgeInsetsMake(15, 0, 0, 0)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         cv.backgroundColor = UIColor.groupTableViewBackground
-        //cv.dataSource = self
-        //cv.delegate = self
         cv.isPagingEnabled = true
         cv.showsHorizontalScrollIndicator = false
-        cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "DetailCell")
+        cv.register(FirstDetailCell.self, forCellWithReuseIdentifier: "FirstDetailCell")
+        cv.register(SecondDetailCell.self, forCellWithReuseIdentifier: "SecondDetailCell")
+        cv.register(ThirdDetailCell.self, forCellWithReuseIdentifier: "ThirdDetailCell")
         cv.register(PhotosHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "photosHeaderCellId")
         return cv
     }()

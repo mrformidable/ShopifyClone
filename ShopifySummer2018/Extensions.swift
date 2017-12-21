@@ -40,6 +40,9 @@ extension UIColor {
     static func themeIndigoDarker() -> UIColor {
         return rgb(red: 0, green: 6, blue: 57)
     }
+    static func seperatorColor() -> UIColor {
+        return rgb(red: 240, green: 240, blue: 240)
+    }
 }
 
 extension UIView {

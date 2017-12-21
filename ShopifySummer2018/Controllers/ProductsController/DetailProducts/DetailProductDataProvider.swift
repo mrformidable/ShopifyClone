@@ -17,14 +17,35 @@ class DetailProductDataProvider: NSObject {
 
 extension DetailProductDataProvider: UICollectionViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
     }
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return 4
+        case 1:
+            return 5
+        case 2:
+            return 1
+        default:
+            return 0
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailCell", for: indexPath)
-        cell.backgroundColor = .themeColor()
+        var cell: UICollectionViewCell!
+        switch indexPath.section {
+        case 0:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FirstDetailCell", for: indexPath) as! FirstDetailCell
+        case 1:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SecondDetailCell", for: indexPath) as! SecondDetailCell
+        case 2:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ThirdDetailCell", for: indexPath) as! ThirdDetailCell
+        default:
+            cell = UICollectionViewCell()
+        }
         return cell
     }
    
@@ -32,27 +53,36 @@ extension DetailProductDataProvider: UICollectionViewDataSource {
 
 extension DetailProductDataProvider: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let photosHeaderSection = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "photosHeaderCellId", for: indexPath) as! BaseCollectionViewCell
+           let photosHeaderSection = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "photosHeaderCellId", for: indexPath) as! BaseCollectionViewCell
+        
         return photosHeaderSection
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if let superView = collectionView.superview {
-            return CGSize(width: superView.frame.width, height: 100)
+            if section == 0 {
+                return CGSize(width: superView.frame.width, height: 100)
+            } else {
+                return CGSize.zero
+            }
         } else {
             return CGSize.zero
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath)
     }
 }
 
 extension DetailProductDataProvider: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if let superView = collectionView.superview {
-            switch indexPath.row {
+            switch indexPath.section {
             case 0:
-                return CGSize(width: superView.frame.width, height: 150)
+                return CGSize(width: superView.frame.width, height: 50)
             case 1:
-                return CGSize(width: superView.frame.width, height: 150)
+                return CGSize(width: superView.frame.width, height: 50)
             case 2:
                 return CGSize(width: superView.frame.width, height: 90)
             default:
@@ -63,54 +93,11 @@ extension DetailProductDataProvider: UICollectionViewDelegateFlowLayout {
             return CGSize.zero
         }
     }
-}
-
-
-class PhotosHeaderCell: BaseCollectionViewCell {
-  
-    override func setup() {
-        backgroundColor = UIColor.yellow
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }
-
-
-//extension DetailProductDataProvider: UITableViewDataSource {
-//
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 3
-//    }
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 3
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailProductCell", for: indexPath)
-//        return cell
-//    }
-//}
-//
-//extension DetailProductDataProvider: UITableViewDelegate {
-//
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        switch section {
-//        case 0:
-//            return 0
-//        default:
-//            return 15
-//        }
-//    }
-//
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let view = UIView()
-//        view.backgroundColor = UIColor.groupTableViewBackground
-//        return view
-//    }
-//}
-
-
-
-
 
 
 
