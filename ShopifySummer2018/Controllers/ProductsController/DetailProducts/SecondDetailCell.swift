@@ -10,22 +10,30 @@ import UIKit
 
 class SecondDetailCell: BaseCollectionViewCell {
     
+    var secondDetailItem: SecondDetailItems? {
+        didSet {
+            guard let title = secondDetailItem?.title.rawValue, let subTitle = secondDetailItem?.subTitle.rawValue, let image = secondDetailItem?.image else {
+                return
+            }
+            titleLabel.text = title
+            subTitleLabel.text = subTitle
+            imageView.image = image
+        }
+    }
+    
     private let imageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.image = #imageLiteral(resourceName: "shipment_icon")
         iv.clipsToBounds = true
-        iv.layer.cornerRadius = 5
-        iv.layer.masksToBounds = true
         return iv
     }()
     
     private let titleLabel: UILabel = {
         let title = UILabel()
         title.numberOfLines = 1
-        let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12), NSAttributedStringKey.foregroundColor: UIColor.lightGray]
-        let attributedString = NSMutableAttributedString(string: "Title Test 1", attributes: attributes)
-        title.attributedText = attributedString
+        title.font = UIFont.systemFont(ofSize: 12)
+        title.textColor = .lightGray
         return title
     }()
     
@@ -70,5 +78,35 @@ class SecondDetailCell: BaseCollectionViewCell {
         
         seperatorLine.anchorConstraints(topAnchor: nil, topConstant: 0, leftAnchor: imageView.rightAnchor, leftConstant: 0, rightAnchor: rightAnchor, rightConstant: 0, bottomAnchor: bottomAnchor, bottomConstant: 0, heightConstant: 0.5, widthConstant: 0)
     }
+    
+}
+
+class SecondDetailItems: NSObject {
+    
+    let title: ItemNameTitles
+    let subTitle: ItemNameSubtitles
+    let image: UIImage
+    
+    init(title: ItemNameTitles, subTitle: ItemNameSubtitles, image: UIImage) {
+        self.title = title
+        self.subTitle = subTitle
+        self.image = image
+    }
+}
+
+enum ItemNameTitles: String {
+    case salesTitle = "Sales channel"
+    case inventoryTitle = "Inventory"
+    case shippingTitle = "Shipping"
+    case organizationTitle = "Organization"
+    case collectionsTitle = "Collections"
+}
+
+enum ItemNameSubtitles: String {
+    case salesSubtitle = "Available on 1 of 1"
+    case inventorySubtitle = "No tracking"
+    case shippingSubtitle = "10.5 kg"
+    case organizationSubTitle = "My Organization"
+    case collectionsSubtitle = "No collections"
     
 }

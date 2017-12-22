@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4410528D1FECDCE40080990B /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410528C1FECDCE40080990B /* WebViewController.swift */; };
 		4421B45E1FEAC8A9000FA634 /* DetailProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4421B45D1FEAC8A9000FA634 /* DetailProductViewController.swift */; };
 		4421B4611FEAD754000FA634 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4421B4601FEAD754000FA634 /* Helpers.swift */; };
 		4421B4631FEAD849000FA634 /* DetailProductDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4421B4621FEAD849000FA634 /* DetailProductDataProvider.swift */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4410528C1FECDCE40080990B /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		4421B45D1FEAC8A9000FA634 /* DetailProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductViewController.swift; sourceTree = "<group>"; };
 		4421B4601FEAD754000FA634 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		4421B4621FEAD849000FA634 /* DetailProductDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductDataProvider.swift; sourceTree = "<group>"; };
@@ -194,11 +196,11 @@
 		443087191FE97808003A93FB /* ProductsController */ = {
 			isa = PBXGroup;
 			children = (
+				443087051FE8ED76003A93FB /* ProductsViewController.swift */,
+				4430870F1FE8F262003A93FB /* ProductsDataProvider.swift */,
+				4462B6531FE9FFCE00E6C210 /* RecentProductsDataProvider.swift */,
 				4421B45B1FEAC7E9000FA634 /* AllProducts */,
 				4421B45F1FEAD61D000FA634 /* DetailProducts */,
-				443087051FE8ED76003A93FB /* ProductsViewController.swift */,
-				4462B6531FE9FFCE00E6C210 /* RecentProductsDataProvider.swift */,
-				4430870F1FE8F262003A93FB /* ProductsDataProvider.swift */,
 			);
 			path = ProductsController;
 			sourceTree = "<group>";
@@ -249,6 +251,7 @@
 				443087151FE97796003A93FB /* Controllers */,
 				4476E3B81FE8C28F00709AEF /* Extensions.swift */,
 				4421B4601FEAD754000FA634 /* Helpers.swift */,
+				4410528C1FECDCE40080990B /* WebViewController.swift */,
 				4476E3891FE8A10B00709AEF /* Main.storyboard */,
 				443087111FE972F7003A93FB /* LoginAndSignup.storyboard */,
 				4476E38F1FE8A10B00709AEF /* Assets.xcassets */,
@@ -423,6 +426,7 @@
 				446B3A9A1FEB48E0003DB1D7 /* SecondDetailCell.swift in Sources */,
 				4476E3881FE8A10B00709AEF /* ViewController.swift in Sources */,
 				4421B4631FEAD849000FA634 /* DetailProductDataProvider.swift in Sources */,
+				4410528D1FECDCE40080990B /* WebViewController.swift in Sources */,
 				446B3A9E1FEB4926003DB1D7 /* ThirdDetailCell.swift in Sources */,
 				443087061FE8ED76003A93FB /* ProductsViewController.swift in Sources */,
 				4462B6581FEA352300E6C210 /* AllProductsViewController.swift in Sources */,

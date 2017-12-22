@@ -22,15 +22,16 @@ class DetailProductViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
-        flowLayout.sectionInset = UIEdgeInsetsMake(15, 0, 0, 0)
+        flowLayout.sectionInset = UIEdgeInsetsMake(10, 0, 15, 0)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        cv.scrollIndicatorInsets = UIEdgeInsetsMake(10, 0, 15, 0)
         cv.backgroundColor = UIColor.groupTableViewBackground
         cv.isPagingEnabled = true
         cv.showsHorizontalScrollIndicator = false
         cv.register(FirstDetailCell.self, forCellWithReuseIdentifier: "FirstDetailCell")
         cv.register(SecondDetailCell.self, forCellWithReuseIdentifier: "SecondDetailCell")
         cv.register(ThirdDetailCell.self, forCellWithReuseIdentifier: "ThirdDetailCell")
-        cv.register(PhotosHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "photosHeaderCellId")
+        cv.register(PhotosHeaderCell.self, forCellWithReuseIdentifier: "photosHeaderCellId")
         return cv
     }()
     
@@ -45,6 +46,7 @@ class DetailProductViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(collectionView)
         collectionView.anchorConstraints(topAnchor: view.topAnchor, topConstant: 0, leftAnchor: view.leftAnchor, leftConstant: 0, rightAnchor: view.rightAnchor, rightConstant: 0, bottomAnchor: view.bottomAnchor, bottomConstant: 0, heightConstant: 0, widthConstant: 0)
+        
     }
 }
 

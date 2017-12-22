@@ -49,6 +49,7 @@ class AllProductsViewController: UIViewController {
         tableView.anchorConstraints(topAnchor: view.topAnchor, topConstant: 0, leftAnchor: view.leftAnchor, leftConstant: 0, rightAnchor: view.rightAnchor, rightConstant: 0, bottomAnchor: view.bottomAnchor, bottomConstant: 0, heightConstant: 0, widthConstant: 0)
         navigationItem.title = "All Products"
         navigationController?.navigationBar.tintColor = .white
+        
     }
 }
 

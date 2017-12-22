@@ -34,6 +34,7 @@ extension AllProductsDataProvider: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: productCellId, for: indexPath) as! AllProductsTableViewCell
+        cell.selectionStyle = .none
         return cell
     }
     

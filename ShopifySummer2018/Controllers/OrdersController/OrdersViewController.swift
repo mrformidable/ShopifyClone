@@ -10,26 +10,30 @@ import UIKit
 
 class OrdersViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBOutlet weak var learnMoreButton: UIButton!
+    @IBOutlet weak var manageOrderLabel: UILabel! {
+        didSet {
+            let attributedText = NSMutableAttributedString(string: "Manage Orders", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)])
+            attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 4)]))
+            attributedText.append(NSAttributedString(string: " You'll get notified when you receive your first order", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
+            manageOrderLabel.attributedText = attributedText
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
-    */
 
+    @IBAction func learnMoreButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: StoryBoardSegueIdentifiers.ordersSegueId.rawValue, sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navController = segue.destination as? UINavigationController {
+            guard let webVC = navController.viewControllers.first as? WebViewController else {
+                return
+            }
+            webVC.urlString = "https://www.shopify.com/guides/make-your-first-ecommerce-sale"
+        }
+    }
 }

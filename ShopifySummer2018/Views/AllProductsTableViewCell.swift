@@ -29,12 +29,17 @@ class AllProductsTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    private let productTitleLabel: UITextView = {
-        let label = UITextView()
+    private let productTitleLabel: UILabel = {
+        let label = UILabel()
         label.text = "This is a title test"
         label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.isEditable = false
-        label.isScrollEnabled = false
+        return label
+    }()
+    
+    private let priceLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Price $2.0"
+        label.font = UIFont.boldSystemFont(ofSize: 15)
         return label
     }()
     
@@ -43,12 +48,10 @@ class AllProductsTableViewCell: UITableViewCell {
         setupViews()
     }
     
-    private let productDescriptionLabel: UITextView = {
-        let label = UITextView()
+    private let productDescriptionLabel: UILabel = {
+        let label = UILabel()
         label.text = "This is a description label test"
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.isEditable = false
-        label.isScrollEnabled = false
+        label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
     
@@ -63,9 +66,9 @@ class AllProductsTableViewCell: UITableViewCell {
         
         productImageView.anchorConstraints(topAnchor: containerView.topAnchor, topConstant: 15, leftAnchor: containerView.leftAnchor, leftConstant: 8, rightAnchor: nil, rightConstant:0, bottomAnchor: containerView.bottomAnchor, bottomConstant: -15, heightConstant: 0, widthConstant: 70)
         
-        productTitleLabel.anchorConstraints(topAnchor: containerView.topAnchor, topConstant: 8, leftAnchor: productImageView.rightAnchor, leftConstant: 5, rightAnchor: containerView.rightAnchor, rightConstant: -5, bottomAnchor: productDescriptionLabel.topAnchor, bottomConstant: 0, heightConstant: 0, widthConstant: 0)
+        productTitleLabel.anchorConstraints(topAnchor: productImageView.topAnchor, topConstant: 4, leftAnchor: productImageView.rightAnchor, leftConstant: 10, rightAnchor: containerView.rightAnchor, rightConstant: -5, bottomAnchor: nil, bottomConstant: 0, heightConstant: 0, widthConstant: 0)
         
-        productDescriptionLabel.anchorConstraints(topAnchor: productTitleLabel.bottomAnchor, topConstant: 0, leftAnchor: productImageView.rightAnchor, leftConstant: 5, rightAnchor: containerView.rightAnchor, rightConstant: -5, bottomAnchor: nil, bottomConstant: 0, heightConstant: 0, widthConstant: 0)
+        productDescriptionLabel.anchorConstraints(topAnchor: productTitleLabel.bottomAnchor, topConstant: 5, leftAnchor: productImageView.rightAnchor, leftConstant: 10, rightAnchor: containerView.rightAnchor, rightConstant: -5, bottomAnchor: nil, bottomConstant: 0, heightConstant: 0, widthConstant: 0)
     }
     
     required init?(coder aDecoder: NSCoder) {

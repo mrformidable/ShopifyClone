@@ -10,26 +10,29 @@ import UIKit
 
 class StoreViewController: UIViewController {
 
+    @IBOutlet weak var manageStoreLabel: UILabel! {
+        didSet {
+            let attributedText = NSMutableAttributedString(string: "Manage Store", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)])
+            attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 4)]))
+            attributedText.append(NSAttributedString(string: " You'll see your store statistics when you create your store", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
+            manageStoreLabel.attributedText = attributedText
+        }
+    }
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func learnMoreButton(_ sender: Any) {
+    performSegue(withIdentifier: StoryBoardSegueIdentifiers.storeSegueId.rawValue, sender: self)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let navController = segue.destination as? UINavigationController {
+            guard let webVC = navController.viewControllers.first as? WebViewController else {
+                return
+            }
+            webVC.urlString = "https://www.shopify.ca/online"
+        }
     }
-    */
-
 }

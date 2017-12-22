@@ -19,8 +19,7 @@ class ProductsTableViewCell: UITableViewCell {
     
      lazy var viewAllButton: UIButton = {
         let button = UIButton()
-        button.setTitle("View all", for: .normal)
-        let attributes = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.themePurple()]
+        let attributes = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.themeIndigo()]
         let attributedTitle = NSAttributedString(string: "View all", attributes: attributes)
         button.setAttributedTitle(attributedTitle, for: .normal)
         return button

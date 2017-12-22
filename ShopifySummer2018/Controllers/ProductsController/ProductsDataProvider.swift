@@ -55,6 +55,7 @@ extension ProductsDataProvider: UITableViewDataSource {
                 cell.accessoryType = .disclosureIndicator
                 cell.titleLabel.isHidden = true
                 cell.viewAllButton.isHidden = true
+                cell.selectionStyle = .none
 
             } else {
                 cell.imageView?.image = #imageLiteral(resourceName: "product_icon_purple")
@@ -62,8 +63,8 @@ extension ProductsDataProvider: UITableViewDataSource {
                 cell.accessoryType = .disclosureIndicator
                 cell.titleLabel.isHidden = true
                 cell.viewAllButton.isHidden = true
+                cell.selectionStyle = .none
             }
-            
         case 1:
             if let collectionView = recentProductsDataProvider?.collectionView {
                 cell.contentView.addSubview(collectionView)
@@ -75,7 +76,6 @@ extension ProductsDataProvider: UITableViewDataSource {
             }
         default:
             cell.accessoryType = .none
-            cell.selectionStyle = .none
             break
         }
         return cell

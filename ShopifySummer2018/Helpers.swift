@@ -21,3 +21,14 @@ class BaseCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+enum StoryBoardSegueIdentifiers: String {
+    case ordersSegueId = "FromOrdersVC"
+    case storeSegueId = "FromStoreVC"
+}
+
+
+
+
+
+
