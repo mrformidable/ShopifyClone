@@ -43,6 +43,9 @@ extension UIColor {
     static func seperatorColor() -> UIColor {
         return rgb(red: 240, green: 240, blue: 240)
     }
+    static func dividerLineColor() -> UIColor {
+        return rgb(red: 204, green: 204, blue: 204)
+    }
 }
 
 extension UIView {

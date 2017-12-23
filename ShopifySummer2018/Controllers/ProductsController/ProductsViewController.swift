@@ -23,6 +23,7 @@ class ProductsViewController: UIViewController {
         sc.searchBar.placeholder = "Search"
         sc.searchBar.barTintColor = UIColor.groupTableViewBackground
         sc.searchBar.isTranslucent = false
+        sc.searchBar.delegate = self
         sc.searchBar.backgroundImage = UIImage()
         return sc
     }()
@@ -33,15 +34,27 @@ class ProductsViewController: UIViewController {
         tableView.delegate = productsDataProvider
         tableView.tableHeaderView = searchController.searchBar
         productsDataProvider.productsDelegate = self
+        navigationController?.navigationBar.isTranslucent = false
     }
     
 }
 
 extension ProductsViewController: UISearchResultsUpdating {
+   
     func updateSearchResults(for searchController: UISearchController) {
-        
+  
+    }
+}
+
+extension ProductsViewController: UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        navigationController?.navigationBar.isTranslucent = true
     }
     
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        navigationController?.navigationBar.isTranslucent = false
+    }
 }
 
 extension ProductsViewController: ProductsDelegate {
@@ -50,7 +63,6 @@ extension ProductsViewController: ProductsDelegate {
         let allProductsVC = AllProductsViewController()
         self.navigationController?.pushViewController(allProductsVC, animated: true)
     }
-    
 }
 
 

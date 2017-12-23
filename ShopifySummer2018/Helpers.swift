@@ -27,8 +27,34 @@ enum StoryBoardSegueIdentifiers: String {
     case storeSegueId = "FromStoreVC"
 }
 
-
-
-
-
+/*
+ Create parallaxMotionEffect
+*/
+public func createParallaxMotionEffect(view: UIView, magnitude: Float) {
+    let xMotion = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
+    xMotion.maximumRelativeValue = magnitude
+    xMotion.minimumRelativeValue = -magnitude
+    
+    let yMotion = UIInterpolatingMotionEffect(keyPath: "center.y", type: .tiltAlongVerticalAxis)
+    yMotion.maximumRelativeValue = magnitude
+    yMotion.minimumRelativeValue = -magnitude
+    
+    let group = UIMotionEffectGroup()
+    group.motionEffects = [xMotion, yMotion]
+    view.addMotionEffect(group)
+}
+/*
+ Create shakeAnimation for textField
+ */
+extension UITextField {
+    func shake() {
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.fromValue = CGPoint(x: self.center.x - 4, y: self.center.y)
+        animation.toValue = CGPoint(x: self.center.x + 4, y: self.center.y)
+        animation.duration = 0.05
+        animation.repeatCount = 5
+        animation.autoreverses = true
+        self.layer.add(animation, forKey: "position")
+    }
+}
 

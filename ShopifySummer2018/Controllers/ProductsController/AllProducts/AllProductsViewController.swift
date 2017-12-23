@@ -23,7 +23,7 @@ class AllProductsViewController: UIViewController {
     
     private lazy var searchController: UISearchController = {
         let sc = UISearchController(searchResultsController: nil)
-        //sc.searchResultsUpdater = self
+        sc.searchResultsUpdater = self
         sc.obscuresBackgroundDuringPresentation = true
         sc.dimsBackgroundDuringPresentation = true
         sc.definesPresentationContext = true
@@ -31,6 +31,7 @@ class AllProductsViewController: UIViewController {
         sc.searchBar.barTintColor = .groupTableViewBackground
         sc.searchBar.isTranslucent = false
         sc.searchBar.backgroundImage = UIImage()
+        sc.searchBar.delegate = self
         return sc
     }()
     
@@ -49,7 +50,23 @@ class AllProductsViewController: UIViewController {
         tableView.anchorConstraints(topAnchor: view.topAnchor, topConstant: 0, leftAnchor: view.leftAnchor, leftConstant: 0, rightAnchor: view.rightAnchor, rightConstant: 0, bottomAnchor: view.bottomAnchor, bottomConstant: 0, heightConstant: 0, widthConstant: 0)
         navigationItem.title = "All Products"
         navigationController?.navigationBar.tintColor = .white
+    }
+}
+
+extension AllProductsViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
         
+    }
+}
+
+extension AllProductsViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        navigationController?.navigationBar.isTranslucent = true
+
+    }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        navigationController?.navigationBar.isTranslucent = false
+
     }
 }
 
