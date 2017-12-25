@@ -29,12 +29,16 @@ class AllProductsDataProvider: NSObject {
 extension AllProductsDataProvider: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return productManager?.productsCount ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: productCellId, for: indexPath) as! AllProductsTableViewCell
         cell.selectionStyle = .none
+        if let product = productManager?.product(at: indexPath.row) {
+            cell.product = product
+        }
+        
         return cell
     }
     

@@ -10,6 +10,13 @@ import UIKit
 
 class OnboardingCell: UICollectionViewCell {
     
+    var onboarding: Onboarding? {
+        didSet {
+            imageView.image = onboarding?.image
+            onboardingLabel.text = onboarding?.message
+        }
+    }
+    
     let imageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
@@ -22,9 +29,8 @@ class OnboardingCell: UICollectionViewCell {
         let label = UILabel()
         label.numberOfLines = 3
         label.textAlignment = .center
-        label.text = "Grow your business on the go with the Shopify App"
-        label.textColor = .lightGray
-        label.font = UIFont.init(name: "Avenir", size: 20)
+        label.textColor = UIColor.themeIndigoDark()
+        label.font = UIFont.init(name: "Avenir-Medium", size: 20)
         return label
     }()
 

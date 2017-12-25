@@ -25,7 +25,7 @@ class WelcomeLoginandSignupVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createParallaxMotionEffect(view: imageView, magnitude: -20)
+        createParallaxMotionEffect(view: imageView, magnitude: -30)
     }
     
     override var shouldAutorotate: Bool {
@@ -33,10 +33,10 @@ class WelcomeLoginandSignupVC: UIViewController {
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
-        
+        performSegue(withIdentifier: StoryBoardSegueIdentifiers.loginSegueId.rawValue, sender: self)
     }
     
     @IBAction func signupButtonTapped(_ sender: Any) {
-        
+        performSegue(withIdentifier: StoryBoardSegueIdentifiers.signupSegueId.rawValue, sender: self)
     }
 }

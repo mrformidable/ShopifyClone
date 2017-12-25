@@ -1,16 +1,17 @@
 //
-//  RecentProductsDataProvider.swift
+//  RecentCollectionDataProvider.swift
 //  ShopifySummer2018
 //
-//  Created by Michael A on 2017-12-19.
+//  Created by Michael A on 2017-12-23.
 //  Copyright © 2017 Shopify Inc. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-class RecentProductsDataProvider: NSObject {
+class RecentCollectionDataProvider: NSObject {
     
-    private let recentProductsCellId = "RecentProductsCell"
+    private let recentCollectionId = "RecentCollectionsCell"
     
     lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -18,21 +19,20 @@ class RecentProductsDataProvider: NSObject {
         flowLayout.minimumLineSpacing = 10
         flowLayout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 0)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        cv.translatesAutoresizingMaskIntoConstraints = false
         cv.backgroundColor = .white
         cv.dataSource = self
         cv.delegate = self
         cv.isPagingEnabled = true
         cv.showsHorizontalScrollIndicator = false
-        cv.register(RecentProductsCollectionViewCell.self, forCellWithReuseIdentifier: recentProductsCellId)
+        cv.register(RecentCollectionCell.self, forCellWithReuseIdentifier: recentCollectionId)
         return cv
     }()
     
 }
 
-extension RecentProductsDataProvider: UICollectionViewDataSource {
+extension RecentCollectionDataProvider: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: recentProductsCellId, for: indexPath) as! RecentProductsCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: recentCollectionId, for: indexPath) as! RecentCollectionCell
         return cell
     }
     
@@ -41,19 +41,8 @@ extension RecentProductsDataProvider: UICollectionViewDataSource {
     }
 }
 
-extension RecentProductsDataProvider: UICollectionViewDelegateFlowLayout {
+extension RecentCollectionDataProvider: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 130, height: 100)
+        return CGSize(width: 150, height: 100)
     }
 }
-
-
-
-
-
-
-
-
-
-
-

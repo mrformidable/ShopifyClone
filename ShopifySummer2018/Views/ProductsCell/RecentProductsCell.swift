@@ -20,17 +20,9 @@ class RecentProductsCollectionViewCell: UICollectionViewCell {
     private let productTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Title Test 1"
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium)
         return label
     }()
-    
-    private let productSubtitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Recently Edited Products"
-        label.font = UIFont.boldSystemFont(ofSize: 14)
-        return label
-    }()
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,6 +37,9 @@ class RecentProductsCollectionViewCell: UICollectionViewCell {
         addSubview(productImageView)
         let height = self.frame.height * 2 / 3
         productImageView.anchorConstraints(topAnchor: topAnchor, topConstant: 0, leftAnchor: leftAnchor, leftConstant: 0, rightAnchor: rightAnchor, rightConstant: 0, bottomAnchor: nil, bottomConstant: 0, heightConstant: height, widthConstant: 0)
+        
+        addSubview(productTitleLabel)
+        productTitleLabel.anchorConstraints(topAnchor: productImageView.bottomAnchor, topConstant: 4, leftAnchor: productImageView.leftAnchor, leftConstant: 4, rightAnchor: nil, rightConstant: 0, bottomAnchor: nil, bottomConstant: 0, heightConstant: 0, widthConstant: 0)
     }
     
     required init?(coder aDecoder: NSCoder) {

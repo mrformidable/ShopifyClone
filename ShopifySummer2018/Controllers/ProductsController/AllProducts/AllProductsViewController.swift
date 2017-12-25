@@ -42,6 +42,24 @@ class AllProductsViewController: UIViewController {
         tableView.tableHeaderView = searchController.searchBar
         allProductsDataProvider.allProductsDelegate = self
         setupViews()
+        getProducts(fromService: ProductServiceApi())
+    }
+    
+    private func getProducts<S: Gettable>(fromService service: S) where S.T == Array<Product?> {
+        service.get { [weak self] (result) in
+            switch result {
+            case .error(let error):
+                print(error)
+                return
+            case .success(let products):
+                let _ = products.map({ product in
+                    if let product = product {
+                        self?.allProductsDataProvider.productManager?.addProduct(product)
+                        self?.tableView.reloadData()
+                    }
+                })
+            }
+        }
     }
     
     private func setupViews() {
@@ -62,11 +80,11 @@ extension AllProductsViewController: UISearchResultsUpdating {
 extension AllProductsViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         navigationController?.navigationBar.isTranslucent = true
-
+        
     }
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         navigationController?.navigationBar.isTranslucent = false
-
+        
     }
 }
 
@@ -76,7 +94,6 @@ extension AllProductsViewController: AllProductsDelegate {
         let detailedVC = DetailProductViewController()
         navigationController?.pushViewController(detailedVC, animated: true)
     }
-    
 }
 
 

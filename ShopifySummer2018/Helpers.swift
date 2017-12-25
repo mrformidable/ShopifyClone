@@ -9,27 +9,29 @@
 import UIKit
 
 
-class BaseCollectionViewCell: UICollectionViewCell {
+public class BaseCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
     func setup() {}
-
-    required init?(coder aDecoder: NSCoder) {
+    
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
-enum StoryBoardSegueIdentifiers: String {
+public enum StoryBoardSegueIdentifiers: String {
     case ordersSegueId = "FromOrdersVC"
     case storeSegueId = "FromStoreVC"
+    case loginSegueId = "SegueToLoginVC"
+    case signupSegueId = "SegueToSignupVC"
 }
 
 /*
  Create parallaxMotionEffect
-*/
+ */
 public func createParallaxMotionEffect(view: UIView, magnitude: Float) {
     let xMotion = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
     xMotion.maximumRelativeValue = magnitude
@@ -57,4 +59,59 @@ extension UITextField {
         self.layer.add(animation, forKey: "position")
     }
 }
+
+protocol Cachable {}
+
+extension UIImageView: Cachable {}
+
+let imageCache = NSCache<NSString, UIImage>()
+
+extension Cachable where Self: UIImageView {
+    typealias completionHandler = ((Bool) -> ())
+    
+    func loadImageCach(with urlString: String, completion: @escaping completionHandler) {
+        self.image = nil
+        if let cachedImage = imageCache.object(forKey: NSString(string: urlString)) {
+            DispatchQueue.main.async {
+                self.image = cachedImage
+                completion(true)
+            }
+            return
+        }
+        if let url = URL.init(string: urlString) {
+            URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) in
+                if error != nil {
+                    print(error!.localizedDescription)
+                    completion(false)
+                    return
+                }
+                if let data = data {
+                    if let image = UIImage(data: data) {
+                        imageCache.setObject(image, forKey: NSString.init(string: urlString))
+                        DispatchQueue.main.async {
+                            self.image = image
+                            completion(true)
+                        }
+                    }
+                }
+            }).resume()
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -11,8 +11,8 @@ import UIKit
 private let cellIdentifer = "OnboardingCell"
 
 class OnboardingViewController: UIViewController {
-    
-    private let onboardingImages: [UIImage] = [#imageLiteral(resourceName: "growth_onboarding"), #imageLiteral(resourceName: "customers_onboarding"), #imageLiteral(resourceName: "orders_onboarding"), #imageLiteral(resourceName: "store_onboarding"), #imageLiteral(resourceName: "white_Image_onboarding")]
+        
+    private var onboardingArray: [Onboarding]!
     
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -36,26 +36,6 @@ class OnboardingViewController: UIViewController {
         return pgControl
     }()
     
-    private lazy var signupButton: UIButton = {
-        let button = UIButton()
-        button.isHidden = true
-        button.backgroundColor = .white
-        button.setTitle("Sign up", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.cornerRadius = 15
-        return button
-    }()
-    
-    private lazy var logInButton: UIButton = {
-        let button = UIButton()
-        button.isHidden = true
-        button.backgroundColor = .white
-        button.setTitle("Sign up", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.cornerRadius = 15
-        return button
-    }()
-    
     private lazy var nextButton: UIButton = {
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "next_button"), for: .normal)
@@ -74,19 +54,17 @@ class OnboardingViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupSkipButtonAnimation()
+        onboardingArray = [Onboarding.init(image: #imageLiteral(resourceName: "growth_onboarding"), message: "Grow your business on the go with Shopify"), Onboarding.init(image: #imageLiteral(resourceName: "customers_onboarding"), message: "Connect and communicate with customers anywhere"), Onboarding.init(image: #imageLiteral(resourceName: "orders_onboarding"), message: "Manage orders and track inventory on the Shopify App"), Onboarding.init(image: #imageLiteral(resourceName: "store_onboarding"), message: "Get access to all the tools you need to setup your business"), Onboarding.init(image: #imageLiteral(resourceName: "white_Image_onboarding"), message: "")]
     }
-   
+    
     @objc
     private func nextButtonTapped(_ button: UIButton) {
         if pageControl.currentPage == 4 {
-            dismissViews()
             return
         }
         
         if pageControl.currentPage == (3) {
-            // do something
-            //showLoginViewController()
-            perform(#selector(showLoginViewController), with: nil, afterDelay: 0.5)
+            dismissViews()
         }
         
         let item = pageControl.currentPage + 1
@@ -95,23 +73,20 @@ class OnboardingViewController: UIViewController {
         pageControl.currentPage += 1
     }
     
+    private func dismissViews() {
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.pageControl.alpha = 0
+        }, completion: nil)
+        perform(#selector(showLoginViewController), with: nil, afterDelay: 0.85)
+    }
+    
     @objc
     private func showLoginViewController() {
         let storyBoard = UIStoryboard(name: "LoginAndSignup", bundle: nil)
-//        guard let navVC = storyBoard.instantiateViewController(withIdentifier: "LoginNavVC") as? UINavigationController else {
-//            fatalError("Failure to instantiate Navigation Controller with identifer of LoginNavVC")
-//        }
-//        guard let _ = navVC.viewControllers.first as? LoginViewController else {
-//            fatalError("Failure to instantiate View Controller with identifer of LoginVC")
-//        }
         guard let welcomeLoginVC = storyBoard.instantiateViewController(withIdentifier: "WelcomeLoginVC") as? WelcomeLoginandSignupVC else {
             fatalError("Failure to instantiate View Controller with identifer of WelcomeLoginVC")
         }
         present(welcomeLoginVC, animated: true, completion: nil)
-    }
-
-    private func dismissViews() {
-        
     }
     
     private func setupSkipButtonAnimation() {
@@ -133,12 +108,15 @@ class OnboardingViewController: UIViewController {
         nextButton.anchorConstraints(topAnchor: nil, topConstant: 0, leftAnchor: nil, leftConstant: 0, rightAnchor: view.rightAnchor, rightConstant: -20, bottomAnchor: view.bottomAnchor, bottomConstant: -20, heightConstant: 70, widthConstant: 70)
         
         view.addSubview(dummyNextButton)
-         dummyNextButton.anchorConstraints(topAnchor: nil, topConstant: 0, leftAnchor: nil, leftConstant: 0, rightAnchor: view.rightAnchor, rightConstant: -20, bottomAnchor: view.bottomAnchor, bottomConstant: -20, heightConstant: 70, widthConstant: 70)
+        dummyNextButton.anchorConstraints(topAnchor: nil, topConstant: 0, leftAnchor: nil, leftConstant: 0, rightAnchor: view.rightAnchor, rightConstant: -20, bottomAnchor: view.bottomAnchor, bottomConstant: -20, heightConstant: 70, widthConstant: 70)
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let indexPath = Int(targetContentOffset.pointee.x / view.frame.width)
         pageControl.currentPage = indexPath
+        if pageControl.currentPage == (4) {
+            dismissViews()
+        }
     }
     
     override var shouldAutorotate: Bool {
@@ -148,12 +126,12 @@ class OnboardingViewController: UIViewController {
 
 extension OnboardingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return onboardingImages.count 
+        return onboardingArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifer, for: indexPath) as! OnboardingCell
-        cell.imageView.image = onboardingImages[indexPath.item]
+        cell.onboarding = onboardingArray[indexPath.item]
         return cell
     }
 }

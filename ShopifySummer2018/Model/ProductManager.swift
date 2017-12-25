@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ProductManager {
+public struct ProductManager {
     var productsCount: Int { return products.count }
     private var products = [Product]()
     
@@ -18,7 +18,7 @@ struct ProductManager {
     
     mutating func addProduct(_ product: Product) {
         if !products.contains(product) {
-            products.append(product) 
+            products.append(product)
         }
     }
     
@@ -30,3 +30,4 @@ struct ProductManager {
         products.removeAll()
     }
 }
+

@@ -12,7 +12,6 @@ class ProductsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var productsDataProvider: ProductsDataProvider!
-    @IBOutlet var recentProductsDataProvider: RecentProductsDataProvider!
     
     private lazy var searchController: UISearchController = {
         let sc = UISearchController(searchResultsController: nil)
@@ -42,7 +41,7 @@ class ProductsViewController: UIViewController {
 extension ProductsViewController: UISearchResultsUpdating {
    
     func updateSearchResults(for searchController: UISearchController) {
-  
+   
     }
 }
 

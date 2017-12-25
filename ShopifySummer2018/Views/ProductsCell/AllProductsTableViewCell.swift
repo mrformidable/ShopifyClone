@@ -11,6 +11,19 @@ import UIKit
 
 class AllProductsTableViewCell: UITableViewCell {
     
+    var product: Product? {
+        didSet {
+            guard let title = product?.title, let description = product?.description, let imageUrl = product?.imageUrl else {
+                return
+            }
+            productTitleLabel.text = title
+            productDescriptionLabel.text = description
+            productImageView.loadImageCach(with: imageUrl) { (_) in
+                
+            }
+        }
+    }
+    
     private let containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .white

@@ -138,12 +138,6 @@
                                 <state key="normal" title="Create Store">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="23"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signinButtonTapped:" destination="bhD-gk-gKv" eventType="touchUpInside" id="eIR-Fj-DpQ"/>
                                 </connections>
@@ -157,7 +151,7 @@
                             <constraint firstItem="H7r-5J-1Ok" firstAttribute="trailing" secondItem="cM5-el-1gS" secondAttribute="trailing" constant="132" id="5LR-pX-YgL"/>
                             <constraint firstItem="H7r-5J-1Ok" firstAttribute="trailing" secondItem="zdI-0m-1t4" secondAttribute="trailing" constant="28" id="5s3-br-xrJ"/>
                             <constraint firstItem="H7r-5J-1Ok" firstAttribute="trailing" secondItem="W0f-7I-Neq" secondAttribute="trailing" constant="35" id="7J3-yc-bCz"/>
-                            <constraint firstItem="ghx-vp-UqM" firstAttribute="top" secondItem="8JH-J0-Vrb" secondAttribute="bottom" id="AEu-Sn-fnG"/>
+                            <constraint firstItem="ghx-vp-UqM" firstAttribute="top" secondItem="H7r-5J-1Ok" secondAttribute="top" id="89Q-J6-pgF"/>
                             <constraint firstItem="3G5-Nq-0hT" firstAttribute="top" secondItem="Y0o-u2-ain" secondAttribute="bottom" constant="3" id="AtZ-Va-dlL"/>
                             <constraint firstItem="cM5-el-1gS" firstAttribute="top" secondItem="Udf-0S-Ff1" secondAttribute="bottom" constant="2" id="B5G-N4-Twb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BOt-BE-Cu5" secondAttribute="trailing" constant="11" id="BuW-vx-q3q"/>
@@ -304,12 +298,6 @@
                                 <state key="normal" title="Log in">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="23"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="loginButtonTapped:" destination="Rb0-fa-qMG" eventType="touchUpInside" id="W3I-LF-6Qt"/>
                                 </connections>
@@ -362,6 +350,7 @@
                         <outlet property="emailAlertLabel" destination="SH1-c2-UER" id="b59-X8-sM9"/>
                         <outlet property="emailDividerView" destination="JLj-rj-0xo" id="ZNB-vt-LzC"/>
                         <outlet property="emailTextField" destination="7Q0-xk-st5" id="ipm-j7-vWX"/>
+                        <outlet property="loginButton" destination="LVW-V1-2Wn" id="68g-hb-iTA"/>
                         <outlet property="passwordAlertLabel" destination="tuw-0U-URt" id="4nv-9v-o4h"/>
                         <outlet property="passwordDividerView" destination="hCU-zo-7ka" id="y0h-cW-rir"/>
                         <outlet property="passwordTextField" destination="FOC-E9-4BU" id="mUJ-MW-am5"/>
@@ -453,7 +442,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="loginButtonTapped:" destination="bLN-0W-YON" eventType="touchUpInside" id="nWL-cU-Qav"/>
-                                    <segue destination="jPk-4Q-Jxo" kind="show" id="vHS-6j-mrR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVV-hA-6Ae">
@@ -462,7 +450,6 @@
                                 <state key="normal" title="New to Shopify? Try it for free"/>
                                 <connections>
                                     <action selector="signupButtonTapped:" destination="bLN-0W-YON" eventType="touchUpInside" id="RKZ-6h-pCR"/>
-                                    <segue destination="L3u-ly-6Co" kind="show" id="bEq-PP-BrY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -488,11 +475,13 @@
                     <connections>
                         <outlet property="imageView" destination="7hp-T5-LDX" id="Cnx-bs-JJk"/>
                         <outlet property="signUpButton" destination="uVV-hA-6Ae" id="sDl-3W-jhQ"/>
+                        <segue destination="jPk-4Q-Jxo" kind="show" identifier="SegueToSignupVC" id="iNw-b0-W7C"/>
+                        <segue destination="L3u-ly-6Co" kind="show" identifier="SegueToLoginVC" id="5Qs-MM-JgD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cjb-Wj-YqL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-748" y="497.90104947526243"/>
+            <point key="canvasLocation" x="-483" y="445"/>
         </scene>
     </scenes>
     <resources>

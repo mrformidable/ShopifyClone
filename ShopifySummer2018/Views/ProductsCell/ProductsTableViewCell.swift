@@ -14,11 +14,13 @@ class ProductsTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Recently Edited Products"
         label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.isHidden = true
         return label
     }()
     
      lazy var viewAllButton: UIButton = {
         let button = UIButton()
+        button.isHidden = true
         let attributes = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.themeIndigo()]
         let attributedTitle = NSAttributedString(string: "View all", attributes: attributes)
         button.setAttributedTitle(attributedTitle, for: .normal)

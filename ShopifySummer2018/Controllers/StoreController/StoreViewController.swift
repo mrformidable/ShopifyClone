@@ -9,7 +9,7 @@
 import UIKit
 
 class StoreViewController: UIViewController {
-
+    
     @IBOutlet weak var manageStoreLabel: UILabel! {
         didSet {
             let attributedText = NSMutableAttributedString(string: "Manage Store", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)])
@@ -18,15 +18,15 @@ class StoreViewController: UIViewController {
             manageStoreLabel.attributedText = attributedText
         }
     }
-  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     @IBAction func learnMoreButton(_ sender: Any) {
-    performSegue(withIdentifier: StoryBoardSegueIdentifiers.storeSegueId.rawValue, sender: self)
+        performSegue(withIdentifier: StoryBoardSegueIdentifiers.storeSegueId.rawValue, sender: self)
     }
-   
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController {
             guard let webVC = navController.viewControllers.first as? WebViewController else {

@@ -16,10 +16,12 @@ protocol ProductsDelegate: class  {
 class ProductsDataProvider: NSObject {
     
     private let productsCellId = "ProductCell"
-
+    
     var productManager: ProductManager?
     
     var recentProductsDataProvider: RecentProductsDataProvider?
+    
+    var recentCollectionDataProvider: RecentCollectionDataProvider?
     
     weak var productsDelegate: ProductsDelegate?
     
@@ -27,6 +29,7 @@ class ProductsDataProvider: NSObject {
         super.init()
         productManager = ProductManager()
         recentProductsDataProvider = RecentProductsDataProvider()
+        recentCollectionDataProvider = RecentCollectionDataProvider()
     }
 }
 
@@ -50,35 +53,49 @@ extension ProductsDataProvider: UITableViewDataSource {
         switch indexPath.section {
         case 0:
             if indexPath.row == 0 {
-                cell.imageView?.image = #imageLiteral(resourceName: "product_icon_purple")
-                cell.textLabel?.text = "All products"
-                cell.accessoryType = .disclosureIndicator
-                cell.titleLabel.isHidden = true
-                cell.viewAllButton.isHidden = true
-                cell.selectionStyle = .none
-
+                setupFirstCell(for: cell, image: #imageLiteral(resourceName: "product_icon_purple"), text: "All products")
             } else {
-                cell.imageView?.image = #imageLiteral(resourceName: "product_icon_purple")
-                cell.textLabel?.text = "Collections"
-                cell.accessoryType = .disclosureIndicator
-                cell.titleLabel.isHidden = true
-                cell.viewAllButton.isHidden = true
-                cell.selectionStyle = .none
+                setupFirstCell(for: cell, image: #imageLiteral(resourceName: "product_icon_purple"), text: "Collections")
             }
         case 1:
-            if let collectionView = recentProductsDataProvider?.collectionView {
-                cell.contentView.addSubview(collectionView)
-                collectionView.anchorConstraints(topAnchor: cell.topAnchor, topConstant: 40, leftAnchor: cell.leftAnchor, leftConstant: 0, rightAnchor: cell.rightAnchor, rightConstant: 0, bottomAnchor: cell.bottomAnchor, bottomConstant: 0, heightConstant: 0, widthConstant: 0 )
-                cell.titleLabel.isHidden = false
-                cell.viewAllButton.isHidden = false
-                cell.accessoryType = .none
-                cell.selectionStyle = .none
-            }
+            setupRecentProductsCell(cell)
+        case 2:
+            setupRecentCollectionCell(for: cell)
         default:
-            cell.accessoryType = .none
             break
         }
         return cell
+    }
+    
+    private func setupFirstCell(for cell: ProductsTableViewCell, image: UIImage, text: String) {
+        cell.imageView?.image = #imageLiteral(resourceName: "product_icon_purple")
+        cell.textLabel?.text = text
+        cell.accessoryType = .disclosureIndicator
+        cell.selectionStyle = .none
+    }
+    
+    private func configueCell(_ cell: ProductsTableViewCell, title label: String) {
+        cell.titleLabel.isHidden = false
+        cell.viewAllButton.isHidden = false
+        cell.accessoryType = .none
+        cell.selectionStyle = .none
+        cell.titleLabel.text = label
+    }
+    
+    private func setupRecentProductsCell(_ cell: ProductsTableViewCell) {
+        configueCell(cell, title: "Recently Edited Products")
+        if let collectionView = recentProductsDataProvider?.collectionView {
+            cell.contentView.addSubview(collectionView)
+            collectionView.anchorConstraints(topAnchor: cell.topAnchor, topConstant: 40, leftAnchor: cell.leftAnchor, leftConstant: 0, rightAnchor: cell.rightAnchor, rightConstant: 0, bottomAnchor: cell.bottomAnchor, bottomConstant: 0, heightConstant: 0, widthConstant: 0 )
+        }
+    }
+    
+    private func setupRecentCollectionCell(for cell: ProductsTableViewCell) {
+        configueCell(cell, title: "Recently Edited Collections")
+        if let collectionView = recentCollectionDataProvider?.collectionView {
+            cell.contentView.addSubview(collectionView)
+            collectionView.anchorConstraints(topAnchor: cell.topAnchor, topConstant: 40, leftAnchor: cell.leftAnchor, leftConstant: 0, rightAnchor: cell.rightAnchor, rightConstant: 0, bottomAnchor: cell.bottomAnchor, bottomConstant: 0, heightConstant: 0, widthConstant: 0 )
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -86,7 +103,7 @@ extension ProductsDataProvider: UITableViewDataSource {
         case 1:
             return 200
         case 2:
-            return 100
+            return 150
         default:
             return 50
         }
@@ -123,10 +140,5 @@ extension ProductsDataProvider: UITableViewDelegate {
         }
     }
 }
-
-
-
-
-
 
 
