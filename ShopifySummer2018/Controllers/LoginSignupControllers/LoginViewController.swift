@@ -75,6 +75,7 @@ class LoginViewController: UIViewController {
         passwordAlertLabel.alpha = 0
         emailTextField.addTarget(self, action: #selector(handleEmailTextFieldEditing), for: .editingDidEnd)
         passwordTextField.addTarget(self, action: #selector(handlePasswordTextFieldEditing), for: .editingDidEnd)
+        emailTextField.becomeFirstResponder()
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapView)))
     }
     

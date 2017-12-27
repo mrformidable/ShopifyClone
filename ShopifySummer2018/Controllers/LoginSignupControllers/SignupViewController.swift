@@ -96,6 +96,7 @@ class SignupViewController: UIViewController {
         emailTextField.addTarget(self, action: #selector(handleEmailTextFieldEditing), for: .editingDidEnd)
         passwordTextField.addTarget(self, action: #selector(handlePasswordTextFieldEditing), for: .editingDidEnd)
         storeTextField.addTarget(self, action: #selector(handleStoreTextFieldEditing), for: .editingDidEnd)
+        emailTextField.becomeFirstResponder()
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapView)))
     }
