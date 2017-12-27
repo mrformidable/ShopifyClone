@@ -265,7 +265,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FOC-E9-4BU" userLabel="passwordTextField">
-                                <rect key="frame" x="28" y="104" width="319" height="20"/>
+                                <rect key="frame" x="28" y="104" width="216" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="VHm-Gf-x2j"/>
                                 </constraints>
@@ -302,6 +302,16 @@
                                     <action selector="loginButtonTapped:" destination="Rb0-fa-qMG" eventType="touchUpInside" id="W3I-LF-6Qt"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eON-4e-Fx7">
+                                <rect key="frame" x="252" y="80" width="88" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <state key="normal" title="Forgot Password">
+                                    <color key="titleColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="forgotPasswordButtonTapped:" destination="bhD-gk-gKv" eventType="touchUpInside" id="tF6-3S-hqB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -309,7 +319,7 @@
                             <constraint firstItem="tuw-0U-URt" firstAttribute="top" secondItem="hCU-zo-7ka" secondAttribute="bottom" constant="5" id="76O-hG-cc0"/>
                             <constraint firstItem="JLj-rj-0xo" firstAttribute="top" secondItem="7Q0-xk-st5" secondAttribute="bottom" constant="3" id="77r-Ig-PWl"/>
                             <constraint firstItem="hCU-zo-7ka" firstAttribute="top" secondItem="FOC-E9-4BU" secondAttribute="bottom" constant="1" id="90H-SM-HuY"/>
-                            <constraint firstAttribute="trailing" secondItem="FOC-E9-4BU" secondAttribute="trailing" constant="28" id="9VX-1T-XfS"/>
+                            <constraint firstAttribute="trailing" secondItem="FOC-E9-4BU" secondAttribute="trailing" constant="131" id="9VX-1T-XfS"/>
                             <constraint firstItem="FOC-E9-4BU" firstAttribute="leading" secondItem="YS6-7K-BXL" secondAttribute="leading" constant="28" id="Cbe-Pq-ed3"/>
                             <constraint firstItem="LVW-V1-2Wn" firstAttribute="leading" secondItem="YS6-7K-BXL" secondAttribute="leading" constant="28" id="Epk-W4-qSH"/>
                             <constraint firstItem="QTp-wn-7Dh" firstAttribute="trailing" secondItem="tuw-0U-URt" secondAttribute="trailing" constant="35" id="J0W-lz-4gc"/>
@@ -325,7 +335,9 @@
                             <constraint firstItem="SH1-c2-UER" firstAttribute="top" secondItem="JLj-rj-0xo" secondAttribute="bottom" constant="3" id="cjT-Dt-Zkk"/>
                             <constraint firstItem="LVW-V1-2Wn" firstAttribute="top" secondItem="tuw-0U-URt" secondAttribute="bottom" constant="10" id="fOk-T3-0rf"/>
                             <constraint firstItem="SH1-c2-UER" firstAttribute="leading" secondItem="QTp-wn-7Dh" secondAttribute="leading" constant="28" id="gFp-sx-BDT"/>
+                            <constraint firstItem="eON-4e-Fx7" firstAttribute="top" secondItem="SH1-c2-UER" secondAttribute="bottom" constant="-3" id="gzY-dK-txv"/>
                             <constraint firstAttribute="trailing" secondItem="JLj-rj-0xo" secondAttribute="trailing" constant="28" id="k4c-qY-0ap"/>
+                            <constraint firstItem="QTp-wn-7Dh" firstAttribute="trailing" secondItem="eON-4e-Fx7" secondAttribute="trailing" constant="35" id="qZq-bz-A3k"/>
                             <constraint firstAttribute="trailing" secondItem="hCU-zo-7ka" secondAttribute="trailing" constant="28" id="sgy-B4-1ZA"/>
                             <constraint firstItem="7Q0-xk-st5" firstAttribute="leading" secondItem="YS6-7K-BXL" secondAttribute="leading" constant="28" id="vQe-ze-c2N"/>
                             <constraint firstItem="tuw-0U-URt" firstAttribute="leading" secondItem="QTp-wn-7Dh" secondAttribute="leading" constant="28" id="y6h-kf-imZ"/>
@@ -358,7 +370,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bpu-It-rTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="836" y="824"/>
+            <point key="canvasLocation" x="836" y="823.53823088455783"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fr6-5c-T0y">
@@ -446,6 +458,9 @@
                             </button>
                             <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVV-hA-6Ae">
                                 <rect key="frame" x="85" y="282" width="205" height="69"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="69" id="vHr-UN-xxg"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="New to Shopify? Try it for free"/>
                                 <connections>
@@ -468,7 +483,6 @@
                             <constraint firstItem="6lO-Oa-aGQ" firstAttribute="top" secondItem="Urw-A2-dIR" secondAttribute="bottom" constant="31" id="lg1-Jl-cfA"/>
                             <constraint firstItem="6lO-Oa-aGQ" firstAttribute="leading" secondItem="xYo-2R-nex" secondAttribute="leading" constant="67" id="neB-8y-tRN"/>
                             <constraint firstItem="uVV-hA-6Ae" firstAttribute="leading" secondItem="xYo-2R-nex" secondAttribute="leading" constant="85" id="rM8-nf-yGw"/>
-                            <constraint firstItem="7hp-T5-LDX" firstAttribute="top" secondItem="uVV-hA-6Ae" secondAttribute="bottom" constant="99" id="wWd-Nd-JCH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xYo-2R-nex"/>
                     </view>
@@ -481,7 +495,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cjb-Wj-YqL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-483" y="445"/>
+            <point key="canvasLocation" x="-671" y="445"/>
         </scene>
     </scenes>
     <resources>

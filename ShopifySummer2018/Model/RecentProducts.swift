@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RecentProduct {
+public struct RecentProduct {
     let title: String
     let imageUrl: String
 }

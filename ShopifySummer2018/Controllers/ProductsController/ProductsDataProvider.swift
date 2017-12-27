@@ -9,11 +9,12 @@
 import Foundation
 import UIKit
 
-protocol ProductsDelegate: class  {
+public protocol ProductsDelegate: class  {
     func showAllProducts()
+    func showAllCollections()
 }
 
-class ProductsDataProvider: NSObject {
+public class ProductsDataProvider: NSObject {
     
     private let productsCellId = "ProductCell"
     
@@ -34,12 +35,11 @@ class ProductsDataProvider: NSObject {
 }
 
 extension ProductsDataProvider: UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return 2
@@ -48,8 +48,9 @@ extension ProductsDataProvider: UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: productsCellId, for: indexPath) as! ProductsTableViewCell
+
         switch indexPath.section {
         case 0:
             if indexPath.row == 0 {
@@ -66,6 +67,7 @@ extension ProductsDataProvider: UITableViewDataSource {
         }
         return cell
     }
+
     
     private func setupFirstCell(for cell: ProductsTableViewCell, image: UIImage, text: String) {
         cell.imageView?.image = #imageLiteral(resourceName: "product_icon_purple")
@@ -98,18 +100,18 @@ extension ProductsDataProvider: UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+   public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 1:
             return 200
         case 2:
-            return 150
+            return 160
         default:
             return 50
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0:
             return 0
@@ -118,7 +120,7 @@ extension ProductsDataProvider: UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = UIColor.groupTableViewBackground
         return view
@@ -126,14 +128,15 @@ extension ProductsDataProvider: UITableViewDataSource {
 }
 
 extension ProductsDataProvider: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
             if indexPath.row == 0 {
                 productsDelegate?.showAllProducts()
                 tableView.deselectRow(at: indexPath, animated: false)
             } else {
-                print("row 2 tapped")
+                productsDelegate?.showAllCollections()
+                tableView.deselectRow(at: indexPath, animated: false)
             }
         default:
             break

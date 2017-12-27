@@ -76,6 +76,7 @@ class OnboardingViewController: UIViewController {
     private func dismissViews() {
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.pageControl.alpha = 0
+            self.nextButton.alpha = 0
         }, completion: nil)
         perform(#selector(showLoginViewController), with: nil, afterDelay: 0.85)
     }

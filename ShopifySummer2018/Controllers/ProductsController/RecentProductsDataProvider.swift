@@ -8,10 +8,10 @@
 
 import UIKit
 
-class RecentProductsDataProvider: NSObject {
+public class RecentProductsDataProvider: NSObject {
     
     private let recentProductsCellId = "RecentProductsCell"
-    
+
     lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
@@ -28,24 +28,55 @@ class RecentProductsDataProvider: NSObject {
         return cv
     }()
     
+    var recentProducts: [FakeRecentProductsModel]!
+    
+    override init() {
+        super.init()
+        recentProducts = FakeRecentProductsGenerator.createRecentProducts()
+    }
+    
 }
 
 extension RecentProductsDataProvider: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: recentProductsCellId, for: indexPath) as! RecentProductsCollectionViewCell
+        cell.recentProduct = recentProducts[indexPath.item]
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return recentProducts.count
     }
 }
 
 extension RecentProductsDataProvider: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 130, height: 100)
     }
 }
+
+// For simplicity create hard coded products
+struct FakeRecentProductsModel {
+    let title: String
+    let description: String
+    let image: UIImage
+}
+
+struct FakeRecentProductsGenerator {
+    static func createRecentProducts() -> [FakeRecentProductsModel] {
+        var products = [FakeRecentProductsModel]()
+        let speakers = FakeRecentProductsModel(title: "Speakers", description: "", image: #imageLiteral(resourceName: "speakers"))
+        let router = FakeRecentProductsModel(title: "Router", description: "", image: #imageLiteral(resourceName: "router"))
+        let woodenGlass = FakeRecentProductsModel(title: "Wooden Glass", description: "", image: #imageLiteral(resourceName: "wooden_glass"))
+        let clock = FakeRecentProductsModel(title: "Clock", description: "", image: #imageLiteral(resourceName: "clock"))
+        products = [speakers, router, woodenGlass, clock]
+        return products
+    }
+}
+
+
+
+
 
 
 

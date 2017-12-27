@@ -10,7 +10,7 @@ import Foundation
 
 public struct ProductManager {
     var productsCount: Int { return products.count }
-    private var products = [Product]()
+    var products = [Product]()
     
     func product(at index: Int) -> Product {
         return products[index]

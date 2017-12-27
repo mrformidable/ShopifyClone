@@ -48,7 +48,6 @@ extension Product {
 }
 
 
-
 extension Product: Equatable {
     public static func ==(lhs: Product, rhs: Product) -> Bool {
         if lhs.title == rhs.title && lhs.description == rhs.description && lhs.imageUrl == rhs.imageUrl {

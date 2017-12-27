@@ -10,10 +10,17 @@ import UIKit
 
 class RecentProductsCollectionViewCell: UICollectionViewCell {
     
+    var recentProduct: FakeRecentProductsModel? {
+        didSet {
+            productTitleLabel.text = recentProduct?.title
+            productImageView.image = recentProduct?.image
+        }
+    }
     private let productImageView: UIImageView = {
         let iv = UIImageView()
-        iv.contentMode = .scaleAspectFill
-        iv.backgroundColor = .cyan
+        iv.contentMode = .scaleAspectFit
+        iv.clipsToBounds = true
+        iv.backgroundColor = UIColor.rgb(red: 239, green: 239, blue: 239)
         return iv
     }()
     
@@ -30,9 +37,10 @@ class RecentProductsCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupViews() {
-        backgroundColor = UIColor.yellow
         layer.cornerRadius = 5
         layer.masksToBounds = true
+        layer.borderWidth = 0.3
+        layer.borderColor = UIColor.lightGray.cgColor
         
         addSubview(productImageView)
         let height = self.frame.height * 2 / 3

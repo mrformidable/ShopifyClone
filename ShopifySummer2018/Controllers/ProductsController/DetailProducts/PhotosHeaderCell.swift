@@ -8,7 +8,22 @@
 
 import UIKit
 
+protocol PhotoHeaderCellDelegate: class {
+    func didTapPhoto(with image: UIImage)
+}
+
 class PhotosHeaderCell: BaseCollectionViewCell {
+    
+    weak var delegate: PhotoHeaderCellDelegate?
+    
+    var product: Product? {
+        didSet {
+            guard let imageUrl = product?.imageUrl else {
+                return
+            }
+            imageView.loadImageCach(with: imageUrl, completion: nil)
+        }
+    }
     
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -22,22 +37,42 @@ class PhotosHeaderCell: BaseCollectionViewCell {
         return cv
     }()
     
-    private let imageView: UIImageView = {
+    private lazy var imageView: UIImageView = {
         let iv = UIImageView()
-        iv.backgroundColor = UIColor.red
+        iv.backgroundColor = UIColor.themeColor()
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.layer.cornerRadius = 5
         iv.layer.masksToBounds = true
+        iv.isUserInteractionEnabled = true
+        iv.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(imageTapped(_:))))
         return iv
     }()
-    
    
+    @objc
+    private func imageTapped(_ gesture: UITapGestureRecognizer) {
+        let imageView = gesture.view as? UIImageView
+        guard let image = imageView?.image else {
+            print("image is nil")
+            return
+        }
+        delegate?.didTapPhoto(with: image)
+    }
+    
     override func setup() {
-        backgroundColor = UIColor.yellow
         addSubview(imageView)
         addSubview(collectionView)
-        //imageView.anchorConstraints(topAnchor: <#T##NSLayoutYAxisAnchor?#>, topConstant: <#T##CGFloat#>, leftAnchor: <#T##NSLayoutXAxisAnchor?#>, leftConstant: <#T##CGFloat#>, rightAnchor: <#T##NSLayoutXAxisAnchor?#>, rightConstant: <#T##CGFloat#>, bottomAnchor: <#T##NSLayoutYAxisAnchor?#>, bottomConstant: <#T##CGFloat#>, heightConstant: <#T##CGFloat#>, widthConstant: <#T##CGFloat#>)
+        imageView.anchorConstraints(topAnchor: topAnchor, topConstant: 0, leftAnchor: leftAnchor, leftConstant: 20, rightAnchor: nil, rightConstant: 0, bottomAnchor: bottomAnchor, bottomConstant: 0, heightConstant: 0, widthConstant: 80)
     }
 }
+
+
+
+
+
+
+
+
+
+
 

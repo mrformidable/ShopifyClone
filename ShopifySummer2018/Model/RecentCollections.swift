@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RecentCollection {
+public struct RecentCollection {
     let title: String
     let imageUrl: String
 }

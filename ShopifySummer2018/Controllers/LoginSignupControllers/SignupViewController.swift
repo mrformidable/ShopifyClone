@@ -69,6 +69,7 @@ class SignupViewController: UIViewController {
     
     private func createAlertAnimation(message: String, alertLabel: UILabel, dividerView: UIView) {
         alertLabel.text = message
+        playVibrationSound()
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
             alertLabel.alpha = 1
             dividerView.backgroundColor = .red

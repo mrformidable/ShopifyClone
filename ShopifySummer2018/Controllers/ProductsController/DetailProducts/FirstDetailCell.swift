@@ -10,6 +10,17 @@ import UIKit
 
 class FirstDetailCell: BaseCollectionViewCell {
     
+    var product: Product? {
+        didSet {
+            guard let title = product?.title, let description = product?.description else {
+                return
+            }
+            titleLabel.text = title
+            titleTextField.text = title
+            descriptionLabel.text = description
+            descriptionTextField.text = description
+        }
+    }
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -90,6 +101,7 @@ class FirstDetailCell: BaseCollectionViewCell {
     private let chargeTaxSwitch: UISwitch = {
         let chargeSwitch = UISwitch()
         chargeSwitch.isOn = false
+        chargeSwitch.onTintColor = UIColor.themeColor()
         return chargeSwitch
     }()
     

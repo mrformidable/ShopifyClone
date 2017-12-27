@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class RecentCollectionDataProvider: NSObject {
+public class RecentCollectionDataProvider: NSObject {
     
     private let recentCollectionId = "RecentCollectionsCell"
     
@@ -28,21 +28,49 @@ class RecentCollectionDataProvider: NSObject {
         return cv
     }()
     
+    var recentCollections: [FakeRecentCollectionModel]!
+    
+    override init() {
+        super.init()
+        recentCollections = FakeRecentCollectionsGenerator.createRecentCollections()
+    }
+    
 }
 
 extension RecentCollectionDataProvider: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: recentCollectionId, for: indexPath) as! RecentCollectionCell
+        cell.recentCollection = recentCollections[indexPath.item]
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return recentCollections.count
     }
 }
 
 extension RecentCollectionDataProvider: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 150, height: 100)
     }
 }
+
+
+// For simplicity create hard coded collections
+struct FakeRecentCollectionModel {
+    let title: String
+    let description: String
+    let image: UIImage
+}
+
+struct FakeRecentCollectionsGenerator {
+    static func createRecentCollections() -> [FakeRecentCollectionModel] {
+        var products = [FakeRecentCollectionModel]()
+        let coffeeJar = FakeRecentCollectionModel(title: "Coffee Jar", description: "", image: #imageLiteral(resourceName: "coffee_jar"))
+        let woodenJar = FakeRecentCollectionModel(title: "Wooden Jar", description: "", image: #imageLiteral(resourceName: "wooden_jar"))
+        let lamp = FakeRecentCollectionModel(title: "Lamp", description: "", image: #imageLiteral(resourceName: "lamp"))
+        products = [coffeeJar, woodenJar, lamp]
+        return products
+    }
+}
+

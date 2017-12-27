@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import AudioToolbox
 
 public class BaseCollectionViewCell: UICollectionViewCell {
     
@@ -45,6 +45,7 @@ public func createParallaxMotionEffect(view: UIView, magnitude: Float) {
     group.motionEffects = [xMotion, yMotion]
     view.addMotionEffect(group)
 }
+
 /*
  Create shakeAnimation for textField
  */
@@ -60,21 +61,31 @@ extension UITextField {
     }
 }
 
-protocol Cachable {}
+/*
+ Create vibration sound for textField
+ */
+public func playVibrationSound() {
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+}
+
+/*
+ Create image cache for images
+ */
+public protocol Cachable {}
 
 extension UIImageView: Cachable {}
 
-let imageCache = NSCache<NSString, UIImage>()
+public let imageCache = NSCache<NSString, UIImage>()
 
 extension Cachable where Self: UIImageView {
     typealias completionHandler = ((Bool) -> ())
     
-    func loadImageCach(with urlString: String, completion: @escaping completionHandler) {
+    func loadImageCach(with urlString: String, completion: completionHandler?) {
         self.image = nil
         if let cachedImage = imageCache.object(forKey: NSString(string: urlString)) {
             DispatchQueue.main.async {
                 self.image = cachedImage
-                completion(true)
+                completion?(true)
             }
             return
         }
@@ -82,7 +93,7 @@ extension Cachable where Self: UIImageView {
             URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) in
                 if error != nil {
                     print(error!.localizedDescription)
-                    completion(false)
+                    completion?(false)
                     return
                 }
                 if let data = data {
@@ -90,7 +101,7 @@ extension Cachable where Self: UIImageView {
                         imageCache.setObject(image, forKey: NSString.init(string: urlString))
                         DispatchQueue.main.async {
                             self.image = image
-                            completion(true)
+                            completion?(true)
                         }
                     }
                 }
@@ -100,18 +111,20 @@ extension Cachable where Self: UIImageView {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
+ Create shapeAnimation
+ */
+public func createShapeLayer(withRadius radius: CGFloat, position: CGPoint, fillColor: UIColor, strokeEnd: CGFloat, strokeColor: UIColor, lineWidth: CGFloat) -> CAShapeLayer {
+    let shapeLayer = CAShapeLayer()
+    let circularPath = UIBezierPath(arcCenter: .zero, radius: radius, startAngle: 0, endAngle: .pi * 2, clockwise: true).cgPath
+    shapeLayer.position = position
+    shapeLayer.path = circularPath
+    shapeLayer.strokeEnd = strokeEnd
+    shapeLayer.lineCap = kCALineCapRound
+    shapeLayer.lineWidth = lineWidth
+    shapeLayer.strokeColor = strokeColor.cgColor
+    shapeLayer.fillColor = fillColor.cgColor
+    shapeLayer.transform = CATransform3DMakeRotation(-.pi / 2, 0, 0, 1)
+    return shapeLayer
+}
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Onboarding {
+public struct Onboarding {
     let image: UIImage
     let message: String
 }

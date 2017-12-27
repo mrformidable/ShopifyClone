@@ -1,15 +1,14 @@
 //
-//  AllProductsTableViewCell.swift
+//  AllProductsSearchCell.swift
 //  ShopifySummer2018
 //
-//  Created by Michael A on 2017-12-20.
+//  Created by Michael A on 2017-12-26.
 //  Copyright © 2017 Shopify Inc. All rights reserved.
 //
 
 import UIKit
 
-
-class AllProductsTableViewCell: UITableViewCell {
+class AllProductsSearchCell: UITableViewCell {
     
     var product: Product? {
         didSet {
