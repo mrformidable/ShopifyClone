@@ -34,7 +34,6 @@ public class RecentProductsDataProvider: NSObject {
         super.init()
         recentProducts = FakeRecentProductsGenerator.createRecentProducts()
     }
-    
 }
 
 extension RecentProductsDataProvider: UICollectionViewDataSource {

@@ -67,8 +67,7 @@ class LoginViewController: UIViewController {
         titleImageView.contentMode = .scaleAspectFill
         navigationItem.titleView = titleImageView
     }
-    
-    
+
     private func setupViews() {
         loginButton.layer.cornerRadius = 23
         emailAlertLabel.alpha = 0
@@ -93,6 +92,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
+        view.endEditing(true)
         dismiss(animated: true, completion: nil)
     }
     

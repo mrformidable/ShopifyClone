@@ -17,7 +17,7 @@ class OnboardingCell: UICollectionViewCell {
         }
     }
     
-    let imageView: UIImageView = {
+   private let imageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
         iv.clipsToBounds = true
@@ -25,7 +25,7 @@ class OnboardingCell: UICollectionViewCell {
         return iv
     }()
     
-    let onboardingLabel: UILabel = {
+   private let onboardingLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 3
         label.textAlignment = .center

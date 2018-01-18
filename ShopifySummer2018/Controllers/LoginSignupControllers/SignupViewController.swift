@@ -123,6 +123,7 @@ class SignupViewController: UIViewController {
     }
   
     @IBAction func cancelButtonTapped(_ sender: Any) {
+        view.endEditing(true)
         dismiss(animated: true, completion: nil)
     }
 }

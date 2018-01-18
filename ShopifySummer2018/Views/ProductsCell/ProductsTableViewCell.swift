@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProductsTableViewCell: UITableViewCell {
+ class ProductsTableViewCell: UITableViewCell {
 
      let titleLabel: UILabel = {
         let label = UILabel()
